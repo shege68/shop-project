@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import './stile.css'
 
 const Title = () => {
     return <h1>Hello App component</h1>
@@ -8,7 +9,7 @@ const Title = () => {
 const Content = () => {
     return (
         <React.Fragment>
-            <p>
+            <p className="red">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
                 ipsum doloribus error alias magni, sint expedita non soluta
                 minus laborum harum eligendi ea optio repudiandae autem nulla!
@@ -28,6 +29,8 @@ const App = () => {
     return (
         <>
             <Title />
+            <Content />
+            <Content />
             <Content />
         </>
     )
