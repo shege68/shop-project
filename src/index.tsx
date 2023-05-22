@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './stile.css'
+import './style.css'
 
 const Title = () => {
     return <h1>Hello App component</h1>
