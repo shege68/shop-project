@@ -3,7 +3,7 @@ type ContentProps = {
     text2: string
 }
 
-const Content = ({ text1, text2 }: ContentProps) => {
+export const Content = ({ text1, text2 }: ContentProps) => {
     return (
         <>
             <p className="red">{text1}</p>
@@ -11,5 +11,3 @@ const Content = ({ text1, text2 }: ContentProps) => {
         </>
     )
 }
-
-export default Content
