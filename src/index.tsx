@@ -6,8 +6,8 @@ type TitleProps = {
     title: string
 }
 
-const Title = (props: TitleProps) => {
-    return <h1>Hello {props.title} component</h1>
+const Title = ({ title }: TitleProps) => {
+    return <h1>Hello {title} component</h1>
 }
 
 const Content = () => {
