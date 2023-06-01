@@ -21,17 +21,19 @@ type State = {
     count: number
 }
 class ProductListItem extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props)
-        this.state = {
-            count: 1,
-        }
-        this.onIncrementClick = this.onIncrementClick.bind(this)
+    state = {
+        count: 1,
     }
 
-    onIncrementClick() {
+    onIncrementClick = () => {
         this.setState((prevState) => ({
             count: prevState.count + 1,
+        }))
+    }
+
+    onDecrementClick = () => {
+        this.setState((prevState) => ({
+            count: prevState.count - 1,
         }))
     }
 
@@ -51,11 +53,16 @@ class ProductListItem extends React.Component<Props, State> {
                     </div>
                     <div className="product-price">Price: $ {price}</div>
                     <div className="product-quantity">
-                        <Button variant="outlined">-</Button>
+                        <Button
+                            variant="outlined"
+                            onClick={() => this.onDecrementClick()}
+                        >
+                            -
+                        </Button>
                         <TextField value={this.state.count} size="small" />
                         <Button
                             variant="outlined"
-                            onClick={this.onIncrementClick}
+                            onClick={() => this.onIncrementClick()}
                         >
                             +
                         </Button>
