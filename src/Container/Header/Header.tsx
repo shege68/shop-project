@@ -15,6 +15,7 @@ type Props = {
         totalPrice: number
     }
 }
+
 const Header = ({ cartData }: Props) => {
     return (
         <AppBar position="static" className="app-bar">
