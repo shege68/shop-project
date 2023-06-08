@@ -3,7 +3,6 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
 import Main from 'Container/Main/Main'
 import { useState } from 'react'
-import { count } from 'console'
 
 type CartData = {
     totalCount: number
