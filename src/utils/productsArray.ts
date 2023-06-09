@@ -1,4 +1,4 @@
-type Product = {
+export type Product = {
     id: number
     title: string
     description: string
@@ -16,7 +16,7 @@ const productsArray: Product[] = [
         type: 'phone',
         capacity: '256',
         price: 1500,
-        image: "/images/37399227.webp"
+        image: "/images/14pro.webp"
     },
     {
         id: 2,
@@ -25,7 +25,7 @@ const productsArray: Product[] = [
         type: 'phone',
         capacity: '256',
         price: 1000,
-        image: "/images/221026603.webp"
+        image: "/images/13pro.webp"
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ const productsArray: Product[] = [
         type: 'phone',
         capacity: '128',
         price: 1000,
-        image: "/images/30872861.webp"
+        image: "/images/14.webp"
     },
     {
         id: 4,
@@ -43,7 +43,7 @@ const productsArray: Product[] = [
         type: 'phone',
         capacity: '512',
         price: 2000,
-        image: "/images/284913550.webp"
+        image: "/images/11promax.webp"
     },
     {
         id: 5,
@@ -52,7 +52,7 @@ const productsArray: Product[] = [
         type: 'phone',
         capacity: '128',
         price: 500,
-        image: "/images/284920888.webp"
+        image: "/images/XS.webp"
     },
     {
         id: 6,
@@ -61,8 +61,17 @@ const productsArray: Product[] = [
         type: 'phone',
         capacity: '64',
         price: 1500,
-        image: "/images/284983293.webp"
+        image: "/images/12pro.webp"
     },
 ]
+
+export const getProductsObject = (array: Product[]) => 
+    array.reduce(
+        (object, product)=> ({
+            ...object,
+            [product.id]: product,
+        }),
+        {}
+    )
 
 export default productsArray
