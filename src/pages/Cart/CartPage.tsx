@@ -1,5 +1,7 @@
 import CartTotal from 'components/CartTotal/CartTotal'
 import CartProductList from 'components/CartProductList/CartProductList'
+import CartProductListItemExtended from 'components/CartProductList/CartProductListItemExtended'
+import { Grid } from '@mui/material'
 
 type Props = {
     productsInCart: {
@@ -10,8 +12,13 @@ type Props = {
 const CartPage = ({ productsInCart }: Props) => {
     return (
         <div>
-            <CartProductList productsInCart={productsInCart} />
-            <CartTotal productsInCart={productsInCart} />
+            <Grid container spacing={4}>
+                <CartProductList
+                    productsInCart={productsInCart}
+                    CartItem={CartProductListItemExtended}
+                />
+                <CartTotal productsInCart={productsInCart} />
+            </Grid>
         </div>
     )
 }
