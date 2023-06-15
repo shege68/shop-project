@@ -24,10 +24,21 @@ const App = () => {
         }))
     }
 
+    const removeProductFromCart = (id: number) => {
+        setProductsInCart((prevState) => {
+            let prevProductInCart = { ...prevState }
+            delete prevProductInCart[id]
+            return prevProductInCart
+        })
+    }
+
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
+            <button onClick={() => removeProductFromCart(1)}>
+                Remove product
+            </button>
             <Container
                 sx={{
                     padding: '40px 0',
