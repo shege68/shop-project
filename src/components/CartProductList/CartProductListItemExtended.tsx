@@ -26,12 +26,6 @@ const CartProductListItemExtended = ({ product, productCount }: Props) => {
                     <div className="product-features">
                         Count: {productCount}
                     </div>
-                    <Button
-                        variant="outlined"
-                        onClick={() => data?.removeProductFromCart(product.id)}
-                    >
-                        <DeleteIcon />
-                    </Button>
                     <Quantity
                         count={productCount}
                         onDecrementClick={() =>
@@ -47,6 +41,12 @@ const CartProductListItemExtended = ({ product, productCount }: Props) => {
                             )
                         }
                     />
+                    <Button
+                        variant="outlined"
+                        onClick={() => data?.removeProductFromCart(product.id)}
+                    >
+                        <DeleteIcon />
+                    </Button>
                 </CardContent>
             </Card>
         </Grid>
