@@ -29,10 +29,12 @@ const CartProductListItemExtended = ({ product, productCount }: Props) => {
                     <Quantity
                         count={productCount}
                         onDecrementClick={() =>
-                            data?.changeProductQuantity(
-                                product.id,
-                                productCount - 1
-                            )
+                            productCount === 1
+                                ? data?.removeProductFromCart(product.id)
+                                : data?.changeProductQuantity(
+                                      product.id,
+                                      productCount - 1
+                                  )
                         }
                         onIncrementClick={() =>
                             data?.changeProductQuantity(
@@ -40,6 +42,7 @@ const CartProductListItemExtended = ({ product, productCount }: Props) => {
                                 productCount + 1
                             )
                         }
+                        minCount={0}
                     />
                     <Button
                         variant="outlined"

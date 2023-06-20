@@ -49,6 +49,7 @@ const ProductListItem = ({
                     count={count}
                     onDecrementClick={onDecrementClick}
                     onIncrementClick={onIncrementClick}
+                    minCount={1}
                 />
                 <CardActions className="btn-wrap">
                     <Button
