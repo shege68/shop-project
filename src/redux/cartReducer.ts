@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { omit } from 'lodash'
-import { act } from 'react-dom/test-utils'
 
 type State = {
     [id: number]: number
