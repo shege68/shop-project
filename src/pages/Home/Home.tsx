@@ -1,13 +1,24 @@
 import ProductList from 'components/Products/ProductList'
+import { Product } from 'utils/productsArray'
 
 type Props = {
     addProductToCart: (id: number, count: number) => void
+    productsInCart: {
+        [id: number]: number
+    }
+    productsObject?: {
+        [id: number]: Product
+    }
 }
 
-const Home = ({ addProductToCart }: Props) => {
+const Home = ({ addProductToCart, productsInCart, productsObject }: Props) => {
     return (
         <>
-            <ProductList addProductToCart={addProductToCart} />
+            <ProductList
+                addProductToCart={addProductToCart}
+                productsInCart={productsInCart}
+                productsObject={productsObject}
+            />
         </>
     )
 }
