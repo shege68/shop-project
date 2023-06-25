@@ -2,7 +2,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
 import { createContext, useState } from 'react'
 import { Container } from '@mui/material'
-import Home from 'pages/Home/Home'
+import ProductList from 'components/Products/ProductList'
 
 type ProductsInCart = {
     [id: number]: number
@@ -48,7 +48,7 @@ const App = () => {
                         padding: '40px 0',
                     }}
                 >
-                    <Home
+                    <ProductList
                         addProductToCart={addProductToCart}
                         productsInCart={productsInCart}
                     />
