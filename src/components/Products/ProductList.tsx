@@ -4,8 +4,8 @@ import productsArray, { Product } from 'utils/productsArray'
 import CartTotal from 'components/CartTotal/CartTotal'
 
 type Props = {
-    addProductToCart: (id: number, count: number) => void
-    productsInCart: {
+    addProductToTotal: (id: number, count: number) => void
+    productsTotal: {
         [id: number]: number
     }
     productsObject?: {
@@ -14,8 +14,8 @@ type Props = {
 }
 
 const ProductList = ({
-    addProductToCart,
-    productsInCart,
+    productsTotal,
+    addProductToTotal,
     productsObject,
 }: Props) => {
     return (
@@ -42,13 +42,13 @@ const ProductList = ({
                             title={title}
                             description={description}
                             price={price}
-                            addProductToCart={addProductToCart}
+                            addProductToTotal={addProductToTotal}
                         />
                     </Grid>
                 ))}
             </Grid>
             <CartTotal
-                productsInCart={productsInCart}
+                productsTotal={productsTotal}
                 productsObject={productsObject}
             />
         </>

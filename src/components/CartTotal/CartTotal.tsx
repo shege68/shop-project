@@ -2,7 +2,7 @@ import { Typography } from '@mui/material'
 import productsArray, { Product, getProductsObject } from 'utils/productsArray'
 
 type Props = {
-    productsInCart: {
+    productsTotal: {
         [id: number]: number
     }
     productsObject?: {
@@ -11,7 +11,7 @@ type Props = {
 }
 
 const CartTotal = ({
-    productsInCart,
+    productsTotal,
     productsObject = getProductsObject(productsArray),
 }: Props) => {
     return (
@@ -22,10 +22,10 @@ const CartTotal = ({
             sx={{ marginTop: '30px' }}
         >
             total:{' '}
-            {Object.keys(productsInCart).reduce(
+            {Object.keys(productsTotal).reduce(
                 (total, productId) =>
                     total +
-                    productsInCart[parseInt(productId)] *
+                    productsTotal[parseInt(productId)] *
                         productsObject[parseInt(productId)].price,
                 0
             )}

@@ -1,59 +1,40 @@
 import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
-import { createContext, useState } from 'react'
+import { useState } from 'react'
 import { Container } from '@mui/material'
 import ProductList from 'components/Products/ProductList'
 
-type ProductsInCart = {
+type ProductsTotal = {
     [id: number]: number
 }
 
-type Context = {
-    changeProductQuantity: (id: number, count: number) => void
-    productsInCart: {
-        [id: number]: number
-    }
-}
-
-export const AppContext = createContext<Context | null>(null)
+type ChangeCurrency = {}
 
 const App = () => {
-    const [productsInCart, setProductsInCart] = useState<ProductsInCart>({})
+    const [productsTotal, setProductsTotal] = useState<ProductsTotal>({})
 
-    const addProductToCart = (id: number, count: number) => {
-        setProductsInCart((prevState) => ({
+    const [changeCurrency, setChangeCurrency] = useState<ChangeCurrency>({})
+
+    const addProductToTotal = (id: number, count: number) => {
+        setProductsTotal((prevState) => ({
             ...prevState,
             [id]: (prevState[id] || 0) + count,
         }))
     }
 
-    const changeProductQuantity = (id: number, count: number) => {
-        setProductsInCart((prevState) => ({
-            ...prevState,
-            [id]: count,
-        }))
-    }
-
     return (
         <StyledEngineProvider injectFirst>
-            <AppContext.Provider
-                value={{
-                    changeProductQuantity: changeProductQuantity,
-                    productsInCart: productsInCart,
+            <CssBaseline />
+            <Container
+                sx={{
+                    padding: '40px 0',
                 }}
             >
-                <CssBaseline />
-                <Container
-                    sx={{
-                        padding: '40px 0',
-                    }}
-                >
-                    <ProductList
-                        addProductToCart={addProductToCart}
-                        productsInCart={productsInCart}
-                    />
-                </Container>
-            </AppContext.Provider>
+                <ProductList
+                    addProductToTotal={addProductToTotal}
+                    productsTotal={productsTotal}
+                />
+            </Container>
         </StyledEngineProvider>
     )
 }
