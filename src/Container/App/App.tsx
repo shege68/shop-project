@@ -1,41 +1,48 @@
-import CssBaseline from '@mui/material/CssBaseline'
-import { StyledEngineProvider } from '@mui/material/styles'
 import { useState } from 'react'
-import { Container } from '@mui/material'
-import ProductList from 'components/Products/ProductList'
-
-type ProductsTotal = {
-    [id: number]: number
-}
-
-type ChangeCurrency = {}
 
 const App = () => {
-    const [productsTotal, setProductsTotal] = useState<ProductsTotal>({})
+    const [changeCurrency, setChangeCurrency] = useState('UAH')
 
-    const [changeCurrency, setChangeCurrency] = useState<ChangeCurrency>({})
+    const [changePrice, setChangePrice] = useState(5800)
 
-    const addProductToTotal = (id: number, count: number) => {
-        setProductsTotal((prevState) => ({
-            ...prevState,
-            [id]: (prevState[id] || 0) + count,
-        }))
+    const [totalPrice, setTotalPrice] = useState(0)
+
+    function addCurrencyAndPriceToCart(currency: string, coefficient: number) {
+        setChangeCurrency(currency)
+        setChangePrice(5800 / coefficient)
+        if (totalPrice !== 0) {
+            setTotalPrice(totalPrice / coefficient)
+        }
+    }
+
+    function addToTotal() {
+        setTotalPrice((prevState) => prevState + changePrice)
     }
 
     return (
-        <StyledEngineProvider injectFirst>
-            <CssBaseline />
-            <Container
-                sx={{
-                    padding: '40px 0',
-                }}
-            >
-                <ProductList
-                    addProductToTotal={addProductToTotal}
-                    productsTotal={productsTotal}
-                />
-            </Container>
-        </StyledEngineProvider>
+        <div>
+            <h1>Our shop page</h1>
+            <button onClick={() => addCurrencyAndPriceToCart('USD', 38)}>
+                USD
+            </button>
+            <button onClick={() => addCurrencyAndPriceToCart('EUR', 40)}>
+                EUR
+            </button>
+            <button onClick={() => addCurrencyAndPriceToCart('UAH', 1)}>
+                UAH
+            </button>
+            <button onClick={() => addCurrencyAndPriceToCart('GBR', 42)}>
+                GBR
+            </button>
+            <p>
+                {changeCurrency}
+                <span style={{ marginLeft: '10px', fontWeight: 'bold' }}>
+                    {changePrice}
+                </span>
+            </p>
+            <button onClick={() => addToTotal()}>Buy</button>
+            <h2>total: {totalPrice}</h2>
+        </div>
     )
 }
 
