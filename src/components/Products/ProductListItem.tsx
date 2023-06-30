@@ -6,6 +6,7 @@ type Props = {
     description: string
     changeCurrency: string
     changePrice: number
+    price: number
     addToTotal: () => void
 }
 
