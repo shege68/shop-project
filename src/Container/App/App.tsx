@@ -1,25 +1,42 @@
 import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
 import { useState } from 'react'
-import { Container } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import ProductList from 'components/Products/ProductList'
+import ChangeCurrency from 'components/ChangeCurrency/ChangeCurrency'
+import { Product } from 'utils/productsArray'
 
-type ProductsTotal = {
-    [id: number]: number
+type PriceInCart = {
+    [price: number]: Product
 }
 
-type ChangeCurrency = {}
-
 const App = () => {
-    const [productsTotal, setProductsTotal] = useState<ProductsTotal>({})
+    const [changeCurrency, setChangeCurrency] = useState('UAH')
 
-    const [changeCurrency, setChangeCurrency] = useState<ChangeCurrency>({})
+    const [changePrice, setChangePrice] = useState(30000)
 
-    const addProductToTotal = (id: number, count: number) => {
-        setProductsTotal((prevState) => ({
-            ...prevState,
-            [id]: (prevState[id] || 0) + count,
-        }))
+    console.log('🚀 ~ file: App.tsx:17 ~ App ~ changePrice:', changePrice)
+
+    const [changeCoefficient, setChangeCoefficient] = useState(1)
+
+    const [totalPrice, setTotalPrice] = useState(0)
+
+    function addCurrencyAndPriceToCart(currency: string, coefficient: number) {
+        setChangeCurrency(currency)
+
+        setChangeCoefficient((prevState) => {
+            return prevState / coefficient
+        })
+
+        setChangePrice(changePrice / coefficient)
+
+        if (totalPrice !== 0) {
+            setTotalPrice(totalPrice / coefficient)
+        }
+    }
+
+    function addToTotal() {
+        setTotalPrice((prevState) => prevState + changePrice)
     }
 
     return (
@@ -30,10 +47,24 @@ const App = () => {
                     padding: '40px 0',
                 }}
             >
-                <ProductList
-                    addProductToTotal={addProductToTotal}
-                    productsTotal={productsTotal}
+                <Typography
+                    component="h2"
+                    variant="h3"
+                    align="center"
+                    sx={{ marginBottom: '30px' }}
+                >
+                    Our shop page
+                </Typography>
+                <ChangeCurrency
+                    addCurrencyAndPriceToCart={addCurrencyAndPriceToCart}
+                    changeCoefficient={changeCoefficient}
                 />
+                <ProductList
+                    addToTotal={addToTotal}
+                    changeCurrency={changeCurrency}
+                    changePrice={changePrice}
+                />
+                {/* <CartTotal /> */}
             </Container>
         </StyledEngineProvider>
     )
