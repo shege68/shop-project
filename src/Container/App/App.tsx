@@ -4,11 +4,11 @@ import { useState } from 'react'
 import { Container, Typography } from '@mui/material'
 import ProductList from 'components/Products/ProductList'
 import ChangeCurrency from 'components/ChangeCurrency/ChangeCurrency'
-import { Product } from 'utils/productsArray'
+import CartTotal from 'components/CartTotal/CartTotal'
 
-type PriceInCart = {
-    [price: number]: Product
-}
+// type PriceInCart = {
+//     [price: number]: Product
+// }
 
 const App = () => {
     const [changeCurrency, setChangeCurrency] = useState('UAH')
@@ -64,7 +64,10 @@ const App = () => {
                     changeCurrency={changeCurrency}
                     changePrice={changePrice}
                 />
-                {/* <CartTotal /> */}
+                <CartTotal
+                    totalPrice={totalPrice}
+                    changeCurrency={changeCurrency}
+                />
             </Container>
         </StyledEngineProvider>
     )
