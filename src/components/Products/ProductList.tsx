@@ -10,7 +10,7 @@ type Props = {}
 const ProductList = (props: Props) => {
     const [changeCurrency, setChangeCurrency] = useState('UAH')
 
-    const [changePrice, setChangePrice] = useState(30000)
+    const [changePrice, setChangePrice] = useState(productsArray)
 
     console.log('🚀 ~ file: App.tsx:17 ~ App ~ changePrice:', changePrice)
 
@@ -25,7 +25,13 @@ const ProductList = (props: Props) => {
             return prevState / coefficient
         })
 
-        setChangePrice(changePrice / coefficient)
+        setChangePrice(
+            changePrice.map((item) => {
+                return { ...item, price: item.price / coefficient }
+            })
+        )
+
+        //changePrice / coefficient
 
         if (totalPrice !== 0) {
             setTotalPrice(totalPrice / coefficient)
@@ -33,7 +39,7 @@ const ProductList = (props: Props) => {
     }
 
     function addToTotal() {
-        setTotalPrice((prevState) => prevState + changePrice)
+        //setTotalPrice((prevState) => prevState + changePrice)
     }
     return (
         <>
@@ -48,7 +54,7 @@ const ProductList = (props: Props) => {
                             title={title}
                             description={description}
                             changeCurrency={changeCurrency}
-                            changePrice={changePrice}
+                            // changePrice={changePrice}
                             price={price}
                             addToTotal={addToTotal}
                         />

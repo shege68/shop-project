@@ -5,7 +5,7 @@ type Props = {
     title: string
     description: string
     changeCurrency: string
-    changePrice: number
+    // changePrice: number
     price: number
     addToTotal: () => void
 }
@@ -14,7 +14,8 @@ const ProductListItem = ({
     title,
     description,
     changeCurrency,
-    changePrice,
+    // changePrice,
+    price,
     addToTotal,
 }: Props) => {
     return (
@@ -25,7 +26,7 @@ const ProductListItem = ({
                 <div className="product-price">
                     {changeCurrency}
                     <span style={{ marginLeft: '10px', fontWeight: 'bold' }}>
-                        {changePrice.toFixed(2)}
+                        {price.toFixed(2)}
                     </span>
                 </div>
                 <CardActions className="btn">
