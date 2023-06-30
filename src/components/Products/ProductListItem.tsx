@@ -7,7 +7,7 @@ type Props = {
     changeCurrency: string
     // changePrice: number
     price: number
-    addToTotal: () => void
+    addToTotal: (price: number) => void
 }
 
 const ProductListItem = ({
@@ -30,7 +30,10 @@ const ProductListItem = ({
                     </span>
                 </div>
                 <CardActions className="btn">
-                    <Button variant="outlined" onClick={() => addToTotal()}>
+                    <Button
+                        variant="outlined"
+                        onClick={() => addToTotal(price)}
+                    >
                         Buy
                     </Button>
                 </CardActions>

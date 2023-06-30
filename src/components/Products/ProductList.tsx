@@ -38,8 +38,8 @@ const ProductList = (props: Props) => {
         }
     }
 
-    function addToTotal() {
-        //setTotalPrice((prevState) => prevState + changePrice)
+    function addToTotal(price: number) {
+        setTotalPrice((prevState) => prevState + price)
     }
     return (
         <>
@@ -48,13 +48,13 @@ const ProductList = (props: Props) => {
                 changeCoefficient={changeCoefficient}
             />
             <Grid container spacing={4}>
-                {productsArray.map(({ id, title, description, price }) => (
+                {changePrice.map(({ id, title, description, price }) => (
                     <Grid item xs={12} sm={6} md={4} key={id}>
                         <ProductListItem
                             title={title}
                             description={description}
                             changeCurrency={changeCurrency}
-                            // changePrice={changePrice}
+                            //changePrice={changePrice}
                             price={price}
                             addToTotal={addToTotal}
                         />
