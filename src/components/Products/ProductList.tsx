@@ -1,6 +1,6 @@
 import { Button, Grid, Typography } from '@mui/material'
 import ProductListItem from './ProductListItem'
-import productsArray, { Product } from 'utils/productsArray'
+import productsArray, { IProduct } from 'utils/productsArray'
 import CartTotal from 'components/CartTotal/CartTotal'
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
         [id: number]: number
     }
     productsObject?: {
-        [id: number]: Product
+        [id: number]: IProduct
     }
 }
 

@@ -1,32 +1,36 @@
-export type Product = {
+export interface IProduct {
     id: number
     title: string
     description: string
+    currency: string
     price: number
 }
 
-const productsArray: Product[] = [
+const productsArray: IProduct[] = [
     {
         id: 1,
         title: 'iPhone 12',
         description: 'This is iPhone 12....',
-        price: 750,
+        currency: '',
+        price: 0,
     },
     {
         id: 2,
         title: 'iPhone 8',
         description: 'This is iPhone 8....',
-        price: 850,
+        currency: '',
+        price: 0,
     },
     {
         id: 3,
         title: 'iPhone X',
         description: 'This is iPhone X.... ',
-        price: 1250,
+        currency: '',
+        price: 0,
     },
 ]
 
-export const getProductsObject = (array: Product[]) => 
+export const getProductsObject = (array: IProduct[]) => 
     array.reduce(
         (object, product)=> ({
             ...object,

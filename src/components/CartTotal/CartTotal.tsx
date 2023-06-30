@@ -1,12 +1,12 @@
 import { Typography } from '@mui/material'
-import productsArray, { Product, getProductsObject } from 'utils/productsArray'
+import productsArray, { IProduct, getProductsObject } from 'utils/productsArray'
 
 type Props = {
     productsTotal: {
         [id: number]: number
     }
     productsObject?: {
-        [id: number]: Product
+        [id: number]: IProduct
     }
 }
 
