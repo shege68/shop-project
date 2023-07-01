@@ -4,8 +4,7 @@ import './ProductListItem.scss'
 type Props = {
     title: string
     description: string
-    changeCurrency: string
-    // changePrice: number
+    currency: string
     price: number
     addToTotal: (price: number) => void
 }
@@ -13,8 +12,7 @@ type Props = {
 const ProductListItem = ({
     title,
     description,
-    changeCurrency,
-    // changePrice,
+    currency,
     price,
     addToTotal,
 }: Props) => {
@@ -24,9 +22,9 @@ const ProductListItem = ({
                 <h4 className="product-title">{title}</h4>
                 <div className="product-description">{description}</div>
                 <div className="product-price">
-                    {changeCurrency}
+                    {currency}
                     <span style={{ marginLeft: '10px', fontWeight: 'bold' }}>
-                        {price.toFixed(2)}
+                        {price.toFixed(0)}
                     </span>
                 </div>
                 <CardActions className="btn">

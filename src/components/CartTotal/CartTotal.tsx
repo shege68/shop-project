@@ -2,10 +2,9 @@ import { Typography } from '@mui/material'
 
 type Props = {
     totalPrice: number
-    changeCurrency: string
 }
 
-const CartTotal = ({ totalPrice, changeCurrency }: Props) => {
+const CartTotal = ({ totalPrice }: Props) => {
     return (
         <Typography
             component="h2"
@@ -13,7 +12,7 @@ const CartTotal = ({ totalPrice, changeCurrency }: Props) => {
             align="center"
             sx={{ marginTop: '30px' }}
         >
-            total: {totalPrice.toFixed(2)} {changeCurrency}
+            total: {totalPrice.toFixed(0)}
         </Typography>
     )
 }
